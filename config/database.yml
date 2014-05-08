@@ -1,0 +1,23 @@
+
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: local_dev
+  template: template0
+  host: localhost
+  port: 5432
+  pool: 5
+  username: postgres
+  password: password
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: local_test
+  template: template0
+  host: localhost
+  port: 5432
+  pool: 5
+  username: postgres
+  password: password
+
