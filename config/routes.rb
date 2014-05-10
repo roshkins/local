@@ -18,6 +18,8 @@ Local::Application.routes.draw do
     end
   end
 
+  post "offers/search" => "offers#search"
+
   root "client#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -10,7 +10,16 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
-    @results = Supplier.where("industry_id = ?", @search.industry_id).near(@search.location)
+    if @search.industry_id.nil?
+      @results = Supplier.near(@search.location)
+    else
+      @results = Supplier.where("industry_id = ?", @search.industry_id).near(@search.location)
+    end
+    ids = []
+    @results.each do |r|
+      ids.push r.id
+    end
+    @offers = Offer.where(supplier_id: ids).all
   end
 
   # GET /searches/new

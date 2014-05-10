@@ -1,11 +1,25 @@
 .row
   .col-md-12
     .page-header
-      Results
+      %h1
+        Search Results
 
 .row
   .col-md-12
-    %ul
-      - @results.each do |r|
-        %li
-          = link_to r.name, supplier_path(r)
+    %ul.nav.nav-tabs
+      %li.active
+        %a{href: "#suppliers", data: {toggle: "tab"}} Suppliers
+      %li
+        %a{href: "#offers", data: {toggle: "tab"}} Offers
+
+    .tab-content
+      #suppliers.tab-pane.active
+        %ul
+          - @results.each do |r|
+            %li
+              = link_to r.name, supplier_path(r)
+      #offers.tab-pane
+        %ul
+          - @offers.each do |o|
+            %li
+              = link_to o.title, supplier_offer_path(o.supplier, o)
