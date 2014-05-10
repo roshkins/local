@@ -1,0 +1,11 @@
+.row
+  .col-md-12
+    .page-header
+      Results
+
+.row
+  .col-md-12
+    %ul
+      - @results.each do |r|
+        %li
+          = link_to r.name, supplier_path(r)

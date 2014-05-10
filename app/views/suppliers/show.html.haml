@@ -1,0 +1,21 @@
+.row
+  .col-md-12
+    .page-header
+      %h1
+        = @supplier.name
+        %small
+          = @supplier.industry.title
+        = link_to new_supplier_offer_path(@supplier), class: "btn btn-default pull-right" do
+          .icon-plus
+          New Offer
+
+.row
+  .col-md-6
+    .panel.panel-default
+      .panel-header
+        %h2 My Offers
+      .panel-content
+        %ul
+        - @supplier.offers.each do |o|
+          %li
+            = link_to o.title, [@supplier, o]

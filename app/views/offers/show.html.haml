@@ -1,0 +1,30 @@
+.row
+  .col-md-12
+    .page-header
+      %h1
+        = @offer.title
+        %small
+          = link_to @offer.supplier.name, supplier_path(@offer.supplier)
+        = link_to t('.back', :default => t("helpers.links.back")), supplier_path(@supplier), :class => 'btn btn-default pull-right'
+
+.row
+  .col-md-6
+    .panel.panel-default.text-center
+      .panel-header
+        %h2 Offer details
+      .panel-body
+        = @offer.details
+
+  .col-md-6
+    %dl.dl-horizontal
+      %dt Price
+      %dd
+        = number_to_currency(@offer.price, unit: "£")
+      %dt View Count
+      %dd
+        .label.label-primary
+          = "#{@offer.view_count} times"
+      %dt Accepted
+      %dd
+        .label.label-success
+          = "#{@offer.accept_count} times"

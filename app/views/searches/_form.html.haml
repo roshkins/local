@@ -1,0 +1,8 @@
+= simple_form_for @search, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :industry_id
+  = f.input :location
+  = f.input :longitude
+  = f.input :latitude
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), searches_path, :class => 'btn'

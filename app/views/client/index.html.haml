@@ -1,0 +1,51 @@
+.row
+  .col-md-12
+    .jumbotron
+      %h1 Local
+      %p Local people for local things
+
+.row
+  .col-md-12
+    .panel
+      = simple_form_for @search, class: "form-horizontal" do |f|
+        %h1
+          .row
+            .col-md-3.col-xs-12.text-center
+              I
+              %strong
+                need
+              a
+            .col-md-3.col-xs-12.text-center
+              = f.association :industry, value_method: :id, label: false, input_html: {class: "form-control"}
+            .col-md-1.col-xs-12.text-center
+              in
+            .col-md-3.col-xs-12.text-center
+              = f.input :location, label: false, input_html: {placeholder: "location", class: "form-control"}
+            .col-md-2.col-ms-12.text-center
+              = f.submit "GO >>", class: "btn btn-primary form-control"
+
+.row
+  .col-sm-4.col-md-offset-4.text-center
+    %h1
+      %strong
+        OR
+
+.row
+  .col-md-12
+    .panel
+      = simple_form_for @supplier, url: sign_up_suppliers_path, class: "form-inline" do |f|
+        %h1
+          .row
+            .col-md-3.col-xs-12.text-center
+              I
+              %strong
+                am
+              a
+            .col-md-3.col-xs-12.text-center
+              = f.association :industry, value_method: :id, label_method: :supplier_name, label: false, input_html: {class: "form-control"}
+            .col-md-1.col-xs-12.text-center
+              in
+            .col-md-3.col-xs-12.text-center
+              = f.input :address, label: false, input_html: {placeholder: "location", class: "form-control"}
+            .col-md-2.col-ms-12.text-center
+              = f.submit "GO >>", class: "btn btn-primary form-control"

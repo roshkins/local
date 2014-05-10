@@ -1,0 +1,13 @@
+.row
+  .col-md-6
+    .text-muted
+      Help text should live here.
+  .col-md-6
+    = simple_form_for @industry, :html => { :class => 'form-horizontal', role: "form" }, defaults: {input_html: {class: "form-control"}} do |f|
+      = f.input :title
+      = f.input :supplier_name
+      = f.association :categories, as: :check_boxes, inline_label: true, input_html: { class: 'checkbox' }
+      %br
+      .form-actions
+        = f.button :submit, :class => 'btn-primary'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), industries_path, class: 'btn btn-default'

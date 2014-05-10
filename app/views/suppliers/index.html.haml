@@ -1,0 +1,23 @@
+- model_class = Supplier
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:address)
+      %th= model_class.human_attribute_name(:industry_id)
+      %th Created
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @suppliers.each do |supplier|
+      %tr
+        %td= link_to supplier.name, supplier_path(supplier)
+        %td= supplier.address
+        %td= supplier.industry.title
+        %td= "#{time_ago_in_words supplier.created_at} ago"
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_supplier_path(supplier), :class => 'btn btn-xs btn-default'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), supplier_path(supplier), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_supplier_path, :class => 'btn btn-primary'

@@ -3,11 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.5'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
+gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
+gem 'bootstrap-sass', '~> 3.1.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -50,9 +47,13 @@ gem "nokogiri"
 gem "thin"
 gem "country_select"
 gem "therubyracer"
-gem "less-rails"
-gem "twitter-bootstrap-rails"
 gem "simple_form"
+gem 'pg'
+
+# geocoder
+gem 'geocoder'
+
+
 group :test, :development do
   gem "rspec"
   gem "rspec-rails"

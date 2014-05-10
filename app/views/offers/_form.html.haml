@@ -1,0 +1,26 @@
+.row
+  .col-md-4
+    So this should really only be accessible by the Supplier who
+    owns this page, but yeah.
+    This'll get tied to S3 for some image uploading goodness
+    and maybe even get a wysiwyg editor for the details field.
+  .col-md-8
+    = simple_form_for [@supplier, @offer], :html => { :class => 'form-horizontal' }, defaults: {input_html: {class: "form-control"}} do |f|
+      .control-group
+        = f.input :title
+      .control-group
+        = f.input :details, as: :text
+      .control-group
+        %label.control-label
+          Price
+
+        = f.input :price, wrapper: :prepend, label: false do
+          .input-group
+            %span.input-group-addon
+              £
+            = f.input_field :price, as: :string
+      = f.input :supplier_id, as: :hidden, input_html: {value: @supplier.id}
+      %br
+      .form-actions
+        = f.button :submit, :class => 'btn-primary'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), supplier_path(@supplier), :class => 'btn btn-default'

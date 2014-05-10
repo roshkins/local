@@ -1,0 +1,25 @@
+.row
+  .col-md-12
+    .page-header
+      %h1 Sign Up
+
+.row
+  .col-md-6
+    .panel
+      .panel-body
+        Fill out the form opposite to create a Supplier profile.
+        This would also be a good time to create an actual user account
+        and take some kind of contact details but we're not doing
+        that yet, so hey ho..
+  .col-md-6
+    = simple_form_for @supplier, defaults: { input_html: { class: 'form-control' } } do |f|
+      .form-group
+        = f.input :name, label: "Your service/company name: "
+        %span.help-block
+          This is how you will be known to customers
+      .form-group
+        = f.association :industry
+      .form-group
+        = f.input :address
+      .form-group
+        =f.submit "Create my profile", class: "btn btn-primary"
