@@ -50,6 +50,8 @@ gem "therubyracer"
 gem "simple_form"
 gem 'pg'
 
+gem 'devise'
+
 # geocoder
 gem 'geocoder'
 

@@ -41,8 +41,22 @@
 
           %a.navbar-brand(href="/") Local
         #local-navbar-collapse.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            - if user_signed_in?
+              %li
+                = link_to "My Searches", searches_path
+              %li
+                = link_to "Sign out", destroy_user_session_path, method: :delete
+            - else
+              %li
+                = link_to "Sign in", new_user_session_path
+              %li
+                = link_to "Create account", new_user_registration_path
+
+
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
+
               %a.dropdown-toggle{href: "#", data: {"toggle" => "dropdown"}}
                 Admin
                 %b.caret

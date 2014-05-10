@@ -1,0 +1,40 @@
+.row
+  .col-sm-12
+    .page-header
+      %h2 Sign up
+
+.row
+  .col-sm-12
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-horizontal"}, defaults: {input_html: {class: "form-control"}}) do |f|
+      = f.error_notification
+      .form-inputs
+        .row
+          .col-sm-4
+            .text-muted
+              Enter your email address. We'll use this to identify you, save your searches
+              and for sending your notifications
+          .col-sm-8
+            = f.input :email, required: true, autofocus: true
+        %br
+        .row
+          .col-sm-4
+            .text-muted
+              Enter your location. We'll save this so we can notify you of
+              any new offers in your area and speed up your searching.
+          .col-sm-8
+            = f.input :default_location
+        %br
+        .row
+          .col-sm-4
+            .text-muted
+              Finally, enter a password. Passwords must be at least 8 characters long.
+          .col-sm-8
+            = f.input :password, required: true
+        .row
+          .col-sm-4
+          .col-sm-8
+            = f.input :password_confirmation, required: true
+      %hr
+      .col-sm-8.col-sm-offset-4
+        = f.button :submit, "Sign up", class: "btn btn-primary"
+        = render "devise/shared/links"

@@ -1,10 +1,11 @@
 class SearchesController < ApplicationController
+  before_action :authenticate_user!, except: [:new, :create, :show]
   before_action :set_search, only: [:show, :edit, :update, :destroy]
 
   # GET /searches
   # GET /searches.json
   def index
-    @searches = Search.all
+    @searches = current_user.searches.all
   end
 
   # GET /searches/1
@@ -36,9 +37,16 @@ class SearchesController < ApplicationController
   def create
     @search = Search.new(search_params)
 
+    if user_signed_in?
+      @search.user = current_user
+      notice_message = 'Search was successfully created.'
+    else
+      notice_message = "Remember to create an account if you want to save your searches!"
+    end
+
     respond_to do |format|
       if @search.save
-        format.html { redirect_to @search, notice: 'Search was successfully created.' }
+        format.html { redirect_to @search, notice: notice_message }
         format.json { render action: 'show', status: :created, location: @search }
       else
         format.html { render action: 'new' }

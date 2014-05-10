@@ -2,12 +2,12 @@
   .col-sm-6
     .jumbotron
       %h1 Local
-      %p Local people for local things
+      %p Local connects you with crafts people, artisans and freelancers in your area.
 
 
   .col-sm-6.col-xs-12.lead.text-center.well
-    Local connects you with crafts people, artisans and freelancers in your area.
-    Search for someone using the form above, or enter your location below
+
+    Search for someone specific using the form below, or enter your location here
     to see what offers we've got in your area.
     %hr
     = simple_form_for @search, html: {class: "form-horizontal"} do |f|
@@ -20,14 +20,15 @@
               = f.input :location, label: false, input_html: {placeholder: "location", class: "form-control"}
       .row
         .col-sm-12.col-ms-12.text-center
-          = f.button :submit, "Search for offers", class: "btn btn-info form-control"
+          = f.button :submit, "Search for offers", class: "btn btn-default form-control"
 
 .row
   .col-sm-6
     .panel.panel-primary
       .panel-heading
-        %h3
-          Search for something specific:
+        .text-center
+          %h3
+            Do you want to search for something specific?
       .panel-body
         = simple_form_for @search, html: {class: "form-horizontal"} do |f|
           .row
@@ -46,7 +47,7 @@
                   = f.input :location, label: false, input_html: {placeholder: "location", class: "form-control"}
           .row
             .col-sm-12.col-ms-12.text-center
-              = f.button :submit, "Search", class: "btn btn-primary form-control"
+              = f.button :submit, "Search for supplier", class: "btn btn-primary form-control"
 
 
 
@@ -54,7 +55,7 @@
     .panel.panel-info
       .panel-heading
         %h3
-          Do you want to sell your services locally?
+          Or do you want to sell your services on Local?
       .panel-body
         = simple_form_for @supplier, url: sign_up_suppliers_path, html: {class: "form-horizontal"} do |f|
           .row
