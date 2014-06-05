@@ -21,6 +21,6 @@
             = f.input_field :price, as: :string
       = f.input :supplier_id, as: :hidden, input_html: {value: @supplier.id}
       %br
-      .form-actions
+      .form-group
         = f.button :submit, :class => 'btn-primary'
         = link_to t('.cancel', :default => t("helpers.links.cancel")), supplier_path(@supplier), :class => 'btn btn-default'

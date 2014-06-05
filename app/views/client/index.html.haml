@@ -17,10 +17,10 @@
             %label.control-label.col-sm-4.col-sm-12
               Search in
             .col-sm-8
-              = f.input :location, label: false, input_html: {placeholder: "location", class: "form-control"}
+              = f.input :location, label: false, autofocus: true, input_html: {placeholder: "Newcastle, UK", class: "form-control"}
       .row
         .col-sm-12.col-ms-12.text-center
-          = f.button :submit, "Search for offers", class: "btn btn-default form-control"
+          = f.button :submit, "Search for offers", class: "btn-block"
 
 .row
   .col-sm-6
@@ -44,10 +44,10 @@
                 %label.control-label.col-sm-4.col-sm-12
                   in
                 .col-sm-8
-                  = f.input :location, label: false, input_html: {placeholder: "location", class: "form-control"}
+                  = f.input :location, label: false, input_html: {placeholder: "Newcastle, UK", class: "form-control"}
           .row
             .col-sm-12.col-ms-12.text-center
-              = f.button :submit, "Search for supplier", class: "btn btn-primary form-control"
+              = f.button :submit, "Search for supplier", class: "btn-block"
 
 
 
@@ -71,7 +71,7 @@
                 %label.control-label.col-sm-4.col-sm-12
                   in
                 .col-sm-8
-                  = f.input :address, label: false, input_html: {placeholder: "location", class: "form-control"}
+                  = f.input :address, label: false, input_html: {placeholder: "Newcastle, UK", class: "form-control"}
           .row
             .col-sm-12.col-ms-12.text-center
-              = f.button :submit, "Sign up to Local", class: "btn btn-info form-control"
+              = f.button :submit, "Sign up to Local", class: "btn-block"

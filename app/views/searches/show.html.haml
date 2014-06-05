@@ -13,13 +13,36 @@
         %a{href: "#offers", data: {toggle: "tab"}} Offers
 
     .tab-content
-      #suppliers.tab-pane.active
-        %ul
-          - @results.each do |r|
-            %li
-              = link_to r.name, supplier_path(r)
-      #offers.tab-pane
-        %ul
-          - @offers.each do |o|
-            %li
-              = link_to o.title, supplier_offer_path(o.supplier, o)
+      #suppliers.tab-pane.active.fade.in
+        %br
+        .box.box-double-padding
+          .box-header
+            .lead.text-center
+              Local suppliers in
+              = @search.location
+
+          .box-content
+            - @results.each do |r|
+              .col-md-4
+                .panel.panel-default
+                  .panel-body
+                    %h3
+                      = link_to r.name, supplier_path(r)
+                    = r.description
+
+      #offers.tab-pane.fade
+        %br
+        .box.box-double-padding
+          .box-header
+            .lead.text-center
+              Offers in
+              = @search.location
+
+          .box-content
+            - @offers.each do |o|
+              .col-md-4
+                .panel.panel-default
+                  .panel-body
+                    %h3
+                      = link_to o.title, supplier_offer_path(o.supplier, o)
+                    = o.details

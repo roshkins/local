@@ -15,7 +15,5 @@
       .panel-header
         %h2 My Offers
       .panel-content
-        %ul
         - @supplier.offers.each do |o|
-          %li
-            = link_to o.title, [@supplier, o]
+          = render partial: "offers/offer_display", locals: {offer: o}

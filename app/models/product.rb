@@ -1,0 +1,2 @@
+class Product < Offer
+end

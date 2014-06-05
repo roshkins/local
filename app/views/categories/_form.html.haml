@@ -1,12 +1,12 @@
 .row
-  .col-md-6
+  .col-md-4
     .text-muted
       Help Text
-  .col-md-6
+  .col-md-8
     = simple_form_for @category, :html => { :class => 'form-horizontal' }, defaults: {input_html: {class: "form-control"}} do |f|
       .form-group
         = f.input :name
       .form-group
-        .form-actions
+        .form-group
           = f.button :submit, :class => 'btn-primary'
           = link_to t('.cancel', :default => t("helpers.links.cancel")), categories_path, :class => 'btn btn-default'

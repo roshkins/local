@@ -1,27 +1,18 @@
-- model_class = Search
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:industry_id)
-      %th= model_class.human_attribute_name(:location)
-      %th= model_class.human_attribute_name(:longitude)
-      %th= model_class.human_attribute_name(:latitude)
-      %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
-    - @searches.each do |search|
-      %tr
-        %td= link_to search.id, search_path(search)
-        %td= search.industry_id
-        %td= search.location
-        %td= search.longitude
-        %td= search.latitude
-        %td=l search.created_at
-        %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_search_path(search), :class => 'btn btn-xs btn-default'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), search_path(search), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
-
-= link_to t('.new', :default => t("helpers.links.new")), new_search_path, :class => 'btn btn-primary'
+.row
+  .col-sm-5
+    .page-header
+      %h1
+        My Recent Searches
+    .row
+      .col-sm-12
+        %ul.list-group
+          - @searches.each do |search|
+            %li.list-group-item
+              = link_to search_path(search) do
+                = "I searched #{search.location}"
+                - unless search.industry.nil?
+                  = "for #{search.industry.title.pluralize}"
+              %span.badge.badge-info
+                = "#{search.offer_ids.count} offers"
+              %span.badge.badge-info
+                = "#{search.supplier_ids.count} vendors"

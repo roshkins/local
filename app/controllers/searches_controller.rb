@@ -49,7 +49,7 @@ class SearchesController < ApplicationController
         format.html { redirect_to @search, notice: notice_message }
         format.json { render action: 'show', status: :created, location: @search }
       else
-        format.html { render action: 'new' }
+        format.html { redirect_to root_path, alert: "Please enter a location to search!" }
         format.json { render json: @search.errors, status: :unprocessable_entity }
       end
     end

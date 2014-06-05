@@ -3,6 +3,6 @@
   = f.input :location
   = f.input :longitude
   = f.input :latitude
-  .form-actions
+  .form-group
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), searches_path, :class => 'btn'

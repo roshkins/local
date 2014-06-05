@@ -47,13 +47,15 @@ gem "nokogiri"
 gem "thin"
 gem "country_select"
 gem "therubyracer"
-gem "simple_form"
+gem 'simple_form', "3.1.0.rc1"
 gem 'pg'
 
 gem 'devise'
 
 # geocoder
 gem 'geocoder'
+# redis for caching
+gem 'redis'
 
 
 group :test, :development do

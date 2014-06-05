@@ -1,9 +1,8 @@
 = simple_form_for @supplier, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name
   = f.input :address
-  = f.input :industry_id
-  = f.input :latitude
-  = f.input :longitude
-  .form-actions
+  = f.input :industry_id, collection: Industry.all
+  = f.input :description
+  .form-group
     = f.button :submit, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), suppliers_path, :class => 'btn btn-default'

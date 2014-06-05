@@ -28,7 +28,13 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       if @supplier.save
-        format.html { redirect_to @supplier, notice: 'Supplier was successfully created.' }
+        # are we creating a user too?
+        # if so we'll sign them in while we're at it
+        unless supplier_params[:user_attributes][:email].nil?
+          sign_in @supplier.user
+        end
+
+        format.html { redirect_to @supplier, notice: 'Your supplier account was successfully created.' }
         format.json { render action: 'show', status: :created, location: @supplier }
       else
         format.html { render action: 'new' }
@@ -64,6 +70,7 @@ class SuppliersController < ApplicationController
   # POST /suppliers/sign_up
   def sign_up
     @supplier = Supplier.new(supplier_params)
+    @supplier.user = User.new
   end
 
   private
@@ -74,6 +81,6 @@ class SuppliersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supplier_params
-      params.require(:supplier).permit(:name, :address, :industry_id)
+      params.require(:supplier).permit(:name, :address, :industry_id, :description, user_attributes: [:email, :default_location, :password, :password_confirmation])
     end
 end

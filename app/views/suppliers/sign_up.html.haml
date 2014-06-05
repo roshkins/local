@@ -1,25 +1,66 @@
 .row
   .col-md-12
     .page-header
-      %h1 Sign Up
+      %h1 Sign up as a supplier
 
 .row
-  .col-md-6
-    .panel
-      .panel-body
-        Fill out the form opposite to create a Supplier profile.
-        This would also be a good time to create an actual user account
-        and take some kind of contact details but we're not doing
-        that yet, so hey ho..
-  .col-md-6
+  .col-md-12
     = simple_form_for @supplier, defaults: { input_html: { class: 'form-control' } } do |f|
-      .form-group
-        = f.input :name, label: "Your service/company name: "
-        %span.help-block
-          This is how you will be known to customers
-      .form-group
-        = f.association :industry
-      .form-group
-        = f.input :address
-      .form-group
-        =f.submit "Create my profile", class: "btn btn-primary"
+      = f.error_notification
+      .row
+        .col-xs-12
+          = f.fields_for :user, defaults: { input_html: { class: 'form-control' } } do |user_form|
+            .form-inputs
+              .row
+                .col-sm-4
+                  .text-muted
+                    Enter your email address. We'll use this to identify you and to notify you when orders/bookings are placed.
+                  .text-strong
+                    Make sure you can recieve email at this address!
+                .col-sm-8
+                  = user_form.input :email, required: true, autofocus: true
+              %hr
+              .row
+                .col-sm-4
+                  .text-muted
+                    Enter your location. We'll save this so we can notify you of
+                    any new offers in your area and speed up your searching.
+                .col-sm-8
+                  = user_form.input :default_location
+              %hr
+              .row
+                .col-sm-4
+                  .text-muted
+                    Enter a password. Passwords must be at least 8 characters long.
+                .col-sm-8
+                  = user_form.input :password, required: true
+              .row
+                .col-sm-4
+                .col-sm-8
+                  = user_form.input :password_confirmation, required: true
+
+      .row
+        .col-xs-12
+          .row
+            %hr
+            .col-sm-4
+              .text-muted
+                This is how you will be known by your customers
+            .col-sm-8
+              = f.input :name, label: "Your service/company name: "
+          .row
+            %hr
+            .col-sm-4.text-muted
+              Make sure you've got the correct Industry selected
+            .col-sm-8
+              = f.association :industry
+          .row
+            %hr
+            .col-sm-4.text-muted
+              Enter the area you provide your services in
+            .col-sm-8
+              = f.input :address
+          .row
+            %hr
+            .col-sm-8.col-sm-offset-4
+              =f.submit "Create my profile", class: "btn btn-primary"
